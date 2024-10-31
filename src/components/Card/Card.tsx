@@ -4,18 +4,18 @@ import Image, { StaticImageData } from 'next/image';
 import { ButtonComponent } from '..';
 
 interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
-  title: string;
-  shortDescription: string;
+  name: string;
+  description: string;
   image: {
-    src: StaticImageData;
+    src: string | StaticImageData;
     alt: string;
   };
   price: {
     icon: {
-      src: StaticImageData;
+      src: string | StaticImageData;
       alt: string;
     };
-    value: string;
+    value: number;
   };
   actionButton: {
     text: string;
@@ -23,17 +23,17 @@ interface CardProps extends React.HTMLAttributes<HTMLDivElement> {
   };
 }
 
-export default function CardComponent({ title, shortDescription, image, price, actionButton, ...props }: CardProps) {
+export default function CardComponent({ name, description, image, price, actionButton, ...props }: CardProps) {
   return (
     <div className={`${cardStyles.main}`} {...props}>
       <div className={`${cardStyles.image_container}`}>
               <Image src={image.src} alt={image.alt} className={`${cardStyles.image}`}  />
       </div>
-      <h3 className={`${cardStyles.heading}`}>{title}</h3>
-      <p className={`${cardStyles.short_description}`}>{shortDescription}</p>
+      <h3 className={`${cardStyles.heading}`}>{name}</h3>
+      <p className={`${cardStyles.description}`}>{description}</p>
       <div className={`${cardStyles.pricing}`}>
         <Image className={`${cardStyles.icon}`} src={price.icon.src} alt={price.icon.alt} width={29} height={29} />
-        <span className={`${cardStyles.text}`}>{price.value}</span>
+        <span className={`${cardStyles.text}`}>{price.value} ETH</span>
       </div>
       <ButtonComponent onClick={actionButton.action}>{actionButton.text}</ButtonComponent>
     </div>

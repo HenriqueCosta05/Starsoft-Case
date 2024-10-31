@@ -1,0 +1,42 @@
+@use '../_variables.module' as vars
+
+.base 
+    background-color: vars.$pallete-color-01
+    color: vars.$pallete-color-05
+    font-family: vars.$font
+    width: 100%
+    height: 100px
+    display: flex
+    justify-content: space-between
+    align-items: center 
+    border-bottom: 1px solid #FFFFFF21
+    margin-bottom: 10rem
+
+.logo 
+    display: flex
+    align-items: center
+    margin-left: 40px
+    img 
+        width: auto
+        height: 40px 
+
+.cart 
+    display: flex
+    align-items: center
+    gap: 8px
+    margin-right: 40px
+    color: vars.$pallete-color-05
+
+    a 
+        display: flex
+        align-items: center
+        gap: 5px 
+        padding-right: 20px 
+
+    img 
+        width: 24px
+        height: auto
+
+    span 
+        font-size: 14px
+        color: vars.$pallete-color-05

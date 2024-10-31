@@ -1,17 +1,17 @@
-@import '../_variables'
+@use '../_variables.module' as vars
 
 .base
   padding: 10px 20px
   border: none
   width: 100%
-  border-radius: $default-border
+  border-radius: vars.$default-border
   cursor: pointer
   transition: background-color 0.3s
-  font-family: $font
-  background-color: $primary-color
-  color: $pallete-color-05
+  font-family: vars.$font
+  background-color: vars.$primary-color
+  color: vars.$pallete-color-05
   text-transform: uppercase
   font-weight: 600
 
-  .disabled 
-    background-color: $disabled-color
+.disabled 
+  background-color: vars.$disabled-color

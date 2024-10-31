@@ -1,45 +1,47 @@
-@import '../_variables'
+@use '../_variables.module' as vars
 
 .main 
-    height: max-content
-    width: min-content
-    background-color: $pallete-color-02
-    padding: $default-border
-    border-radius: $default-border
+    min-height: 300px
+    width: 20rem
+    background-color: vars.$pallete-color-02
+    padding: vars.$default-border
+    border-radius: vars.$default-border
     gap: 4px
     padding: 18px 12px
-
+    display: flex
+    flex-direction: column
+    justify-content: space-between
 
     .heading
         font-weight: 500
         font-size: 18px
-        color: $pallete-color-05
+        color: vars.$pallete-color-05
 
     .short_description
         font-weight: 300
         font-size: 12px 
-        color: $pallete-color-04
+        color: vars.$pallete-color-04
 
     .image_container 
-        background-color: $pallete-color-01
-        border-radius: 4px
+        background-color: vars.$pallete-color-01
+        border-radius: vars.$default-border
         padding: 20px
+        margin: 10px 5px
+        display: flex
+        justify-content: center
+        align-items: center
 
         .image 
             width: 10rem
             height: 10rem
 
     .pricing
-        margin-left: 10px
-        margin-bottom: 4px
+        margin-bottom: 8px
+        height: 30px
+        display: flex
+        align-items: center
 
         .icon 
+            margin-right: 12px
             width: 29px
             height: 29px
-            object-fit: cover
-        
-        .text 
-            color: #f0f0f0
-            font-weight: 600
-        
-

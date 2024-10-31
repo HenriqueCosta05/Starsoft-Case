@@ -1,6 +1,7 @@
+version: '3.8'
+
 services:
-  web:
-    image: starsoft-case
+  app:
     build:
       context: .
       dockerfile: Dockerfile
@@ -9,3 +10,5 @@ services:
     volumes:
       - .:/app
       - /app/node_modules
+    environment:
+      - NODE_ENV=development

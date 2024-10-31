@@ -1,23 +1,24 @@
 "use client"
 import React from 'react';
 import { CardComponent } from '@/components';
-import styles from '../styles/Home.module.sass';
+import styles from '../styles/home.module.sass';
 import image from './images/examples.png';
+import coin from './images/coin.svg';
 
 export default function Home() {
   const cardData = {
-    title: 'Lorem Ipsum',
-    shortDescription: 'Redesigned from scratch and completely revised.',
+    name: 'Lorem Ipsum',
+    description: 'Redesigned from scratch and completely revised.',
     image: {
       src: image,
       alt: 'Sample Product Image',
     },
     price: {
       icon: {
-        src: image,
+        src: coin,
         alt: 'Price Icon',
       },
-      value: '$99.99',
+      value: 100.00,
     },
     actionButton: {
       text: 'Comprar',

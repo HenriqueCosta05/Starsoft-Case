@@ -1,7 +1,7 @@
-@import './_variables'
-    
+@use './_variables.module' as vars
+
 .base 
-    background-color: $pallete-color-01
-    color: $pallete-color-05
-    border-radius: $default-border
-    font-family: $font
+    background-color: vars.$pallete-color-01
+    color: vars.$pallete-color-05
+    border-radius: vars.$default-border
+    font-family: vars.$font
