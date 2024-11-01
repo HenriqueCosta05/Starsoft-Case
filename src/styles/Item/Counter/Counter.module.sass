@@ -1,0 +1,25 @@
+@use '../../_variables.module' as vars
+
+.counter
+  display: flex
+  align-items: center
+  background-color: vars.$pallete-color-03
+  border-radius: vars.$default-border
+  padding: 4px 8px
+
+  .button
+    background: none
+    border: none
+    color: vars.$pallete-color-05
+    font-size: 18px
+    padding: 0 8px
+    cursor: pointer
+
+    &:disabled
+      color: vars.$disabled-color
+      cursor: not-allowed
+
+  .quantity
+    margin: 0 8px
+    font-size: 16px
+    color: vars.$pallete-color-05

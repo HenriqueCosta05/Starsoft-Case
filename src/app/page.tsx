@@ -1,6 +1,6 @@
-"use client"
+"use client";
 import React from 'react';
-import { CardComponent } from '@/components';
+import { ButtonComponent, Card } from '@/components';
 import styles from '../styles/home.module.sass';
 import image from './images/examples.png';
 import coin from './images/coin.svg';
@@ -26,15 +26,27 @@ export default function Home() {
     },
   };
 
-  const cards = Array.from({ length: 12 }).map((_, index) => (
-    <CardComponent key={index} {...cardData} />
-  ));
-
   return (
     <main className={styles.container}>
-      <div className={styles.cardsContainer}>
-        {cards}
-      </div>
+      <section className={styles.cards_container}>
+        {[...Array(12)].map((_, index) => (
+          <Card.Root key={index}>
+            <Card.Image src={cardData.image.src} alt={cardData.image.alt} />
+            <Card.Title>{cardData.name}</Card.Title>
+            <Card.Description>{cardData.description}</Card.Description>
+            <Card.Pricing>
+              {cardData.price.value}
+            </Card.Pricing>
+            <ButtonComponent onClick={cardData.actionButton.action}>
+              {cardData.actionButton.text}
+            </ButtonComponent>
+          </Card.Root>
+        ))}
+      </section>
+      
+      <ButtonComponent progress={30} className={styles.load_more}>
+        Carregar Mais
+      </ButtonComponent>
     </main>
   );
 }

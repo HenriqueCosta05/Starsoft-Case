@@ -14,7 +14,7 @@ export default function Navbar() {
           </div>
           {/*Cart*/}
             <div className={`${styles.cart}`}>
-              <Link href="/cart">
+              <Link href="/checkout">
                   <Image src={bag} alt={"Carrinho de compras"} />
                   <span>0</span>
                 </Link>

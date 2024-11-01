@@ -1,20 +1,38 @@
-import React from 'react';
-import styles from '../../styles/Button/Button.module.sass';
+import React from "react";
+import styles from "../../styles/Button/Button.module.sass";
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  isLoading?: boolean;
+  progress?: number;
+  className?: string;
 }
 
-export default function Button({ isLoading = false, disabled, children, onClick, ...props }: ButtonProps) {
+export default function Button({
+  progress,
+  disabled,
+  children,
+  className,
+  onClick,
+  ...props
+}: ButtonProps) {
   return (
-    <button
-      {...props}
-      className={`${styles.base} ${disabled ? styles.disabled : ''}`}
-      disabled={disabled || isLoading}
-      aria-busy={isLoading}
-      onClick={onClick}
-    >
-      {isLoading ? <span className={styles.spinner}></span> : children}
-    </button>
+    <div className={className}>
+      {progress !== undefined && (
+        <div className={styles.progress_bar}>
+          <span
+            className={styles.progress}
+            style={{ width: `${progress}%` }}
+          ></span>
+        </div>
+      )}
+
+      <button
+        {...props}
+        className={`${styles.base} ${disabled ? styles.disabled : ""}`}
+        disabled={disabled}
+        onClick={onClick}
+      >
+        {children}
+      </button>
+    </div>
   );
 }

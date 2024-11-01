@@ -1,6 +1,7 @@
 @use '../_variables.module' as vars
 
 .base
+  position: relative
   padding: 10px 20px
   border: none
   width: 100%
@@ -12,6 +13,25 @@
   color: vars.$pallete-color-05
   text-transform: uppercase
   font-weight: 600
+  gap: 10px
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-direction: column
 
 .disabled 
   background-color: vars.$disabled-color
+
+.progress_bar
+  width: 100%
+  height: 10px
+  background-color: vars.$pallete-color-03
+  border-radius: 5px
+  overflow: hidden
+  margin-top: 5px
+
+.progress
+  display: block
+  height: 100%
+  background-color: vars.$primary-color
+  transition: width 0.3s ease
