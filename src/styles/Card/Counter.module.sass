@@ -1,13 +1,19 @@
 @use '../_variables.module' as vars
 
 .counter
-  display: flex
-  align-items: center
-  background-color: vars.$pallete-color-03
-  border-radius: vars.$default-border
-  padding: 4px 8px
+    display: flex
+    align-items: center
+    justify-content: space-between
+    background-color: vars.$pallete-color-01
+    border-radius: vars.$default-border
+    padding: 4px 8px
+    
+    width: 100px
 
-  .button
+    @media screen and (max-width: 768px)
+        padding: 2px 4px
+
+.button
     background: none
     border: none
     color: vars.$pallete-color-05
@@ -16,10 +22,18 @@
     cursor: pointer
 
     &:disabled
-      color: vars.$disabled-color
-      cursor: not-allowed
+        color: vars.$disabled-color
+        cursor: not-allowed
 
-  .amount
+    @media screen and (max-width: 768px)
+        font-size: 16px
+        padding: 0 4px
+
+.amount
     margin: 0 8px
     font-size: 16px
     color: vars.$pallete-color-05
+
+    @media screen and (max-width: 768px)
+        font-size: 14px
+        margin: 0 4px

@@ -1,6 +1,9 @@
 @use '../_variables.module' as vars
 
 .card_title
-        font-weight: 500
-        font-size: 18px
-        color: vars.$pallete-color-05
+    font-weight: 500
+    font-size: 18px
+    color: vars.$pallete-color-05
+
+    @media screen and (max-width: 768px)
+        font-size: 16px

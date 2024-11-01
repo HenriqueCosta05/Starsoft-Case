@@ -26,6 +26,7 @@ export default function Home() {
     },
   };
 
+  const progress = 30;
   return (
     <main className={styles.container}>
       <section className={styles.cards_container}>
@@ -44,8 +45,8 @@ export default function Home() {
         ))}
       </section>
       
-      <ButtonComponent progress={30} className={styles.load_more}>
-        Carregar Mais
+      <ButtonComponent progress={30} className={styles.load_more} backgroundColor="#393939">
+        {progress === 100 ? "Você já viu tudo" : "Carregar mais"}
       </ButtonComponent>
     </main>
   );

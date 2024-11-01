@@ -1,14 +1,20 @@
 @use '../_variables.module' as vars
 
-.card_image_container 
-        background-color: vars.$pallete-color-01
-        border-radius: vars.$default-border
-        padding: 20px
-        margin: 10px 5px
-        display: flex
-        justify-content: center
-        align-items: center
+.card_image_container
+    background-color: vars.$pallete-color-01
+    border-radius: vars.$default-border
+    padding: 20px
+    margin: 15px
+    display: flex
+    justify-content: center
+    align-items: center
+    flex: 0 0 auto
 
 .card_image 
-        width: 10rem
-        height: 10rem
+    width: 10rem
+    height: 10rem
+
+@media screen and (max-width: 768px)
+    .card_image
+        width: 25vw
+        height: 25vw

@@ -5,10 +5,11 @@ import Image, { StaticImageData } from "next/image";
 interface ImageProps {
   src: string | StaticImageData;
   alt: string;
+  background_color?: string;
 }
-export default function ImageComponent({ src, alt }: ImageProps) {
+export default function ImageComponent({ src, alt, background_color}: ImageProps) {
   return (
-    <div className={`${styles.card_image_container}`}>
+    <div className={`${styles.card_image_container}`} style={{backgroundColor: background_color}}>
       <Image src={src} alt={alt} className={`${styles.card_image}`} />
     </div>
   );

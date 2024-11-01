@@ -9,9 +9,9 @@ export default function Navbar() {
   return (
     <header className={`${styles.base}`}>
           {/*Logo*/}
-            <div className={`${styles.logo}`}>
+            <Link className={`${styles.logo}`} href="/">
               <Image src={logo} alt="Logo" />
-          </div>
+          </Link>
           {/*Cart*/}
             <div className={`${styles.cart}`}>
               <Link href="/checkout">

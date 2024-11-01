@@ -9,7 +9,8 @@ export default function PricingComponent({ children }: PricingProps) {
     return (
         <span className={`${styles.card_pricing}`}>
             <Coin className={`${styles.card_pricing_icon}`} />
-            {children}
+            {children + ' ETH'}
+            
         </span>
     );
 }

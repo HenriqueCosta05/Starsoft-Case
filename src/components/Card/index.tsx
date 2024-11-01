@@ -6,6 +6,7 @@ import PricingComponent from "./Pricing";
 import RootComponent from "./Root";
 import TitleComponent from "./Title";
 import ToggleComponent from "./Toggle";
+import WrapperComponent from '../Wrapper/Wrapper'
 
 export const Card = {
     Root: RootComponent,
@@ -15,5 +16,6 @@ export const Card = {
     Button: CardButtonComponent,
     Counter: CounterComponent,
     Pricing: PricingComponent,
-    Toggle: ToggleComponent
+    Toggle: ToggleComponent,
+    Wrapper: WrapperComponent,
 }

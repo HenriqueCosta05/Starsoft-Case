@@ -2,10 +2,78 @@
 
 .base
   display: flex
+  flex-direction: column
   align-items: center
-  background-color: vars.$pallete-color-02
   border-radius: vars.$default-border
   padding: 16px
   font-family: vars.$font
   color: vars.$pallete-color-05
+  background-color: vars.$pallete-color-01
+  margin: 10rem auto
 
+.main_content
+  width: 100%
+  gap: 8px
+
+.intro_section
+  display: flex
+  align-items: center
+  width: 100%
+  justify-content: center
+  gap: 5rem
+  margin-bottom: 10rem
+
+.title 
+  font-size: 1.5rem
+  font-weight: 600
+
+.items_section 
+  display: flex
+  flex-direction: column
+  gap: 30px
+  width: 100%
+  margin-top: 1rem
+
+.item_content
+  display: flex
+  flex-direction: column
+  gap: 4px
+
+.item_actions
+  margin-top: 10px
+  display: flex
+  flex-wrap: nowrap
+  width: 100%
+  justify-content: space-between
+
+.finish_order_section
+  display: flex
+  flex-direction: column
+  align-items: center
+  justify-content: space-between
+  width: 90vw
+  padding: 20px
+  margin-top: 20px
+
+.total
+  display: flex
+  align-items: center
+  justify-content: space-between
+  width: 100%
+  gap: 10px
+  margin-bottom: 20px
+
+.price
+  display: flex
+  align-items: center
+  gap: 5px
+
+.finish_order_button
+  padding: 10px 20px
+  width: 90vw
+  background-color: vars.$primary-color
+  color: vars.$pallete-color-05
+  border: none
+  border-radius: vars.$default-border
+  cursor: pointer
+  transition: background-color 0.3s

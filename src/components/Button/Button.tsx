@@ -4,6 +4,7 @@ import styles from "../../styles/Button/Button.module.sass";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   progress?: number;
   className?: string;
+  backgroundColor?: string;
 }
 
 export default function Button({
@@ -11,6 +12,7 @@ export default function Button({
   disabled,
   children,
   className,
+  backgroundColor,
   onClick,
   ...props
 }: ButtonProps) {
@@ -30,6 +32,7 @@ export default function Button({
         className={`${styles.base} ${disabled ? styles.disabled : ""}`}
         disabled={disabled}
         onClick={onClick}
+        style={{backgroundColor}}
       >
         {children}
       </button>
