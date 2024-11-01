@@ -1,12 +1,17 @@
 "use client";
+
 import React from 'react';
+import { useDispatch } from 'react-redux'
+import {addItemToCart} from '@/redux/cart/actions'
 import { ButtonComponent, Card } from '@/components';
 import styles from '../styles/home.module.sass';
 import image from './images/examples.png';
 import coin from './images/coin.svg';
 
 export default function Home() {
-  const cardData = {
+  const dispatch = useDispatch();
+
+  const cardData = { 
     name: 'Lorem Ipsum',
     description: 'Redesigned from scratch and completely revised.',
     image: {
@@ -21,12 +26,21 @@ export default function Home() {
       value: 100.00,
     },
     actionButton: {
-      text: 'Comprar',
-      action: () => alert('Teste'),
+      text: 'Adicionar ao Carrinho',
     },
   };
 
   const progress = 30;
+
+  const handleItemClick = () => {
+    dispatch(addItemToCart({
+      id: cardData.id,
+      name: cardData.name,
+      description: cardData.description,
+      image: cardData.image.src,
+      price: cardData.price.value,
+    }));
+  }
   return (
     <main className={styles.container}>
       <section className={styles.cards_container}>
@@ -38,7 +52,7 @@ export default function Home() {
             <Card.Pricing>
               {cardData.price.value}
             </Card.Pricing>
-            <ButtonComponent onClick={cardData.actionButton.action}>
+            <ButtonComponent onClick={handleItemClick}>
               {cardData.actionButton.text}
             </ButtonComponent>
           </Card.Root>

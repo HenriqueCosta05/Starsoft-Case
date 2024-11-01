@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import styles from '../styles/base.module.sass'
-import { FooterComponent, NavbarComponent } from "@/components";
+import styles from "../styles/base.module.sass";
+import ReduxProvider from './redux-provider';
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -23,15 +23,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
-    <html lang="en">
+    <html lang="pt-br">
       <body className={`${poppins.variable} ${styles.base}`}>
-        <NavbarComponent />
-        {children}
-        <FooterComponent />
+        <ReduxProvider>
+          {children}
+        </ReduxProvider>
       </body>
     </html>
   );
