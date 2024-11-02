@@ -3,28 +3,27 @@
 import { useSelector, useDispatch } from 'react-redux';
 import React, { useRef } from "react";
 import CheckoutClient from './page.client';
-import {
-  removeItemFromCart,
-  increaseItemQuantity,
-  decreaseItemQuantity,
-} from "@/redux/cart/actions";
+import { removeItem, increaseItemQuantity, decreaseItemQuantity } from '@/redux/cart/slice';
+import { selectItemsTotalPrice } from "@/redux/cart/cart.selectors"
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const { items } = useSelector((rootReducer) => rootReducer.cartReducer);
+  const items = useSelector((state) => state.cart.items);
   const itemRefs = useRef(items.map(() => React.createRef()));
 
   const handleIncrease = (id: string) => {
-    dispatch(increaseItemQuantity(id))
+    dispatch(increaseItemQuantity(id));
   };
 
   const handleDecrease = (id: string) => {
-    dispatch(decreaseItemQuantity(id))
+    dispatch(decreaseItemQuantity(id));
   };
 
   const handleDelete = (id: string) => {
-    dispatch(removeItemFromCart(id));
+    dispatch(removeItem(id));
   };
+
+  const totalPrice = useSelector(selectItemsTotalPrice);
 
   return (
     <CheckoutClient
@@ -33,6 +32,7 @@ export default function Checkout() {
       handleDecrease={handleDecrease}
       handleDelete={handleDelete}
       itemRefs={itemRefs}
+      totalPrice={totalPrice}
     />
   );
 }

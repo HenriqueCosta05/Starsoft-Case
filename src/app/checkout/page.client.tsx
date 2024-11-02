@@ -4,18 +4,20 @@ import React from "react";
 import styles from "@/styles/checkout.module.sass";
 import { Arrow, Bin, Coin } from "@/components/Icons";
 import { RedirectComponent, Card, WrapperComponent, ButtonComponent } from "@/components";
-import sampleImage from "@/images/examples.png";
 
 interface PageProps {
     items: unknown;
     handleIncrease: () => void;
     handleDecrease: () => void;
     handleDelete: () => void;
+    totalPrice: number;
 }
-export default function CheckoutClient({items, handleIncrease, handleDecrease, handleDelete}: PageProps) {
+export default function CheckoutClient({items, handleIncrease, handleDecrease, handleDelete, totalPrice}: PageProps) {
   return (
     <main className={styles.base}>
-      <section className={styles.intro_section} id="intro">
+      {items && items.length !== 0 ? (
+        <>
+        <section className={styles.intro_section} id="intro">
         <RedirectComponent>
           <Arrow />
         </RedirectComponent>
@@ -25,13 +27,13 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
         {items.map((item, index) => (
           <Card.Root key={index} orientation="horizontal">
             <Card.Wrapper className={styles.card_image_container}>
-              <Card.Image src={sampleImage} alt="Sample Product Image" />
+              <Card.Image src={item.image.src} alt="Product image" />
             </Card.Wrapper>
             <Card.Wrapper className={styles.main_content}>
               <Card.Wrapper className={styles.item_content}>
-                <Card.Title>Item {index}</Card.Title>
-                <Card.Description>Descrição do item {index}</Card.Description>
-                <Card.Pricing>100.00</Card.Pricing>
+                <Card.Title>{item.name}</Card.Title>
+                <Card.Description>{item.description}</Card.Description>
+                <Card.Pricing>{item.price}</Card.Pricing>
               </Card.Wrapper>
               <Card.Wrapper className={styles.item_actions}>
                 <Card.Counter amount={item.amount} handleIncrement={() => {handleIncrease(item.id)}} handleDecrement={() => {handleDecrease(item.id)}} />
@@ -48,11 +50,21 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
           <h1>Total</h1>
           <span className={styles.price}>
             <Coin />
-            <h2>44 ETH</h2>
+            <h2>{totalPrice !== undefined ? totalPrice : 0} ETH</h2>
           </span>
         </WrapperComponent>
         <ButtonComponent className={styles.finish_order_button}>Finalizar Compra</ButtonComponent>
       </WrapperComponent>
+      </>
+      ): (
+        <section className={styles.empty_section}>
+          <h1>Ainda não existem items no carrinho!</h1>
+          <RedirectComponent>
+            <ButtonComponent>Voltar à página inicial</ButtonComponent>
+          </RedirectComponent>
+        </section>
+      )}
+      
     </main>
   );
 }

@@ -6,5 +6,10 @@ export type Item = {
     description: string;
     image: string;
     price: number;
-    createdAt?: Date | string
+    createdAt?: Date | string;
+}
+
+export type CartState = {
+    items: Item[];
+    amount: number;
 }

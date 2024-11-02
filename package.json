@@ -1,6 +1,6 @@
 {
   "name": "starsoft-case",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "scripts": {
     "icons:generate": "npx @svgr/cli src/app/images --out-dir src/components/Icons --typescript",
@@ -10,6 +10,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.3.0",
     "@types/react-router-dom": "^5.3.3",
     "framer-motion": "^11.11.10",
     "next": "15.0.2",
@@ -27,7 +28,7 @@
     "@types/react-dom": "^18",
     "eslint": "^8",
     "eslint-config-next": "15.0.2",
-    "sass": "^1.80.5",
+    "sass": "^1.80.6",
     "typescript": "^5"
   }
 }
