@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import styles from "../styles/base.module.sass";
 import ReduxProvider from './redux-provider';
+import { ReactQueryClientProvider } from "./react-query-client-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,6 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
+    <ReactQueryClientProvider>
     <html lang="pt-br">
       <body className={`${poppins.variable} ${styles.base}`}>
         <ReduxProvider>
@@ -34,5 +36,6 @@ export default function RootLayout({
         </ReduxProvider>
       </body>
     </html>
+    </ReactQueryClientProvider>
   );
 }
