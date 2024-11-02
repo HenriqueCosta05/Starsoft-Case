@@ -10,7 +10,7 @@ interface ImageProps {
 export default function ImageComponent({ src, alt, background_color}: ImageProps) {
   return (
     <div className={`${styles.card_image_container}`} style={{backgroundColor: background_color}}>
-      <Image src={src} alt={alt} className={`${styles.card_image}`} sizes='100vw' width={0} height={0} />
+      <Image src={src} alt={alt} className={`${styles.card_image}`} sizes='100vw' width={0} height={0} priority />
     </div>
   );
 }

@@ -1,6 +1,6 @@
 {
   "name": "starsoft-case",
-  "version": "0.9.0",
+  "version": "0.10.0",
   "private": true,
   "scripts": {
     "icons:generate": "npx @svgr/cli src/app/images --out-dir src/components/Icons --typescript",

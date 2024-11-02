@@ -1,5 +1,5 @@
 "use client";
-import React, {useEffect} from "react";
+import React, {useState} from "react";
 import type { Item } from "@/types/Cart";
 import styles from "@/styles/checkout.module.sass";
 import { Arrow, Bin, Coin } from "@/components/Icons";
@@ -14,7 +14,12 @@ interface PageProps {
     totalPrice: number;
 }
 export default function CheckoutClient({items, handleIncrease, handleDecrease, handleDelete, totalPrice}: PageProps) {
-    
+    const [text, setText] = useState("Finalizar compra")
+
+    const handleBuyClick = () => {
+      alert("Compra finalizada com sucesso!")
+      setText("Compra Finalizada!")
+    }
   return (
     <main className={styles.base}>
       {items && items.length !== 0 ? (
@@ -80,8 +85,8 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
                 <h2>{totalPrice !== undefined ? totalPrice : 0} ETH</h2>
               </span>
             </WrapperComponent>
-            <ButtonComponent className={styles.finish_order_button}>
-              Finalizar Compra
+            <ButtonComponent className={styles.finish_order_button} onClick={()=> {handleBuyClick()}}>
+              {text}
             </ButtonComponent>
           </WrapperComponent>
           </>
