@@ -7,46 +7,34 @@ const initialState: CartState = {
 };
 
 const cartSlice = createSlice({
-  name: "cart",
+  name: 'cart',
   initialState,
   reducers: {
-    addItem: (state, action: PayloadAction<Item>) => {
-      const isItemInCart = state.items.some(
-        (item) => item.id === action.payload.id
-      );
+    addItemToCart(state, action: PayloadAction<Item>) {
+      const isItemInCart = state.items.some((item) => item.id === action.payload.id);
       if (isItemInCart) {
         state.items = state.items.map((item) =>
-          item.id === action.payload.id
-            ? { ...item, amount: item.amount + 1 }
-            : item
+          item.id === action.payload.id ? { ...item, amount: item.amount + 1 } : item
         );
       } else {
         state.items.push({ ...action.payload, amount: 1 });
       }
     },
-    removeItem: (state, action: PayloadAction<string>) => {
+    removeItem(state, action: PayloadAction<string>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    increaseItemQuantity: (state, action: PayloadAction<string>) => {
+    increaseItemQuantity(state, action: PayloadAction<string>) {
       state.items = state.items.map((item) =>
         item.id === action.payload ? { ...item, amount: item.amount + 1 } : item
       );
     },
-    decreaseItemQuantity: (state, action: PayloadAction<string>) => {
+    decreaseItemQuantity(state, action: PayloadAction<string>) {
       state.items = state.items.map((item) =>
-        item.id === action.payload && item.amount > 1
-          ? { ...item, amount: item.amount - 1 }
-          : item
+        item.id === action.payload && item.amount > 1 ? { ...item, amount: item.amount - 1 } : item
       );
     },
   },
 });
 
-export const {
-  addItem,
-  removeItem,
-  increaseItemQuantity,
-  decreaseItemQuantity,
-} = cartSlice.actions;
-
+export const { addItemToCart, removeItem, increaseItemQuantity, decreaseItemQuantity } = cartSlice.actions;
 export default cartSlice.reducer;

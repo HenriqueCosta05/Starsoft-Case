@@ -1,67 +1,33 @@
 "use client";
-
-import React from 'react';
-import { useDispatch } from 'react-redux'
-import {addItemToCart} from '@/redux/cart/actions'
-import { ButtonComponent, Card } from '@/components';
-import styles from '../styles/home.module.sass';
-import image from './images/examples.png';
-import coin from './images/coin.svg';
+import HomeClient from './page.client';
+import { API_URL } from '../constants';
+import { useQuery } from "@tanstack/react-query";
+import { fetchData } from '@/utils/fetchData';
 
 export default function Home() {
-  const dispatch = useDispatch();
+  const currentPage = 1;
+  const totalPages = 4; 
+  const progress = (currentPage / totalPages) * 100;
 
-  const cardData = { 
-    name: 'Lorem Ipsum',
-    description: 'Redesigned from scratch and completely revised.',
-    image: {
-      src: image,
-      alt: 'Sample Product Image',
-    },
-    price: {
-      icon: {
-        src: coin,
-        alt: 'Price Icon',
-      },
-      value: 100.00,
-    },
-    actionButton: {
-      text: 'Adicionar ao Carrinho',
-    },
-  };
+  const { status, data, error } = useQuery({
+    queryKey: ["items", currentPage, 12],
+    queryFn: () => fetchData(API_URL, currentPage, 12),
+  });
 
-  const progress = 30;
 
-  const handleItemClick = () => {
-    dispatch(addItemToCart({
-      id: cardData.id,
-      name: cardData.name,
-      description: cardData.description,
-      image: cardData.image.src,
-      price: cardData.price.value,
-    }));
+  if (status === 'loading') {
+    return <div>Carregando...</div>; {/* utilizarei o framer motion aqui */}
   }
-  return (
-    <main className={styles.container}>
-      <section className={styles.cards_container}>
-        {[...Array(12)].map((_, index) => (
-          <Card.Root key={index}>
-            <Card.Image src={cardData.image.src} alt={cardData.image.alt} />
-            <Card.Title>{cardData.name}</Card.Title>
-            <Card.Description>{cardData.description}</Card.Description>
-            <Card.Pricing>
-              {cardData.price.value}
-            </Card.Pricing>
-            <ButtonComponent onClick={handleItemClick}>
-              {cardData.actionButton.text}
-            </ButtonComponent>
-          </Card.Root>
-        ))}
-      </section>
-      
-      <ButtonComponent progress={30} className={styles.load_more} backgroundColor="#393939">
-        {progress === 100 ? "Você já viu tudo" : "Carregar mais"}
-      </ButtonComponent>
-    </main>
-  );
+
+  if (status === 'error') {
+    return <div>Ocorreu um erro: {error.message}</div>; {/* utilizarei o framer motion aqui */}
+  }
+
+  if (!data) {
+    return <div>Sem dados disponíveis</div>; {
+      /* utilizarei o framer motion aqui */
+    }
+  }
+
+  return <HomeClient progress={progress} items={data.data} />;
 }

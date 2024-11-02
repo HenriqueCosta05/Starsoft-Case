@@ -1,12 +1,12 @@
 "use client";
 import React from "react";
-
+import type { Item } from "@/types/Cart";
 import styles from "@/styles/checkout.module.sass";
 import { Arrow, Bin, Coin } from "@/components/Icons";
 import { RedirectComponent, Card, WrapperComponent, ButtonComponent } from "@/components";
 
 interface PageProps {
-    items: unknown;
+    items: Item[];
     handleIncrease: () => void;
     handleDecrease: () => void;
     handleDelete: () => void;
@@ -27,7 +27,7 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
         {items.map((item, index) => (
           <Card.Root key={index} orientation="horizontal">
             <Card.Wrapper className={styles.card_image_container}>
-              <Card.Image src={item.image.src} alt="Product image" />
+              <Card.Image src={item.image} alt="Product image" />
             </Card.Wrapper>
             <Card.Wrapper className={styles.main_content}>
               <Card.Wrapper className={styles.item_content}>

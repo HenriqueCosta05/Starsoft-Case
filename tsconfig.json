@@ -24,7 +24,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/images/*": ["./src/app/images/*"],
       "@/types/*": ["./src/app/types/*"],
-      "@/redux/*": ["./src/redux/*"]
+      "@/redux/*": ["./src/redux/*"],
+      "@/utils/*": ["./src/utils/*"]
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],

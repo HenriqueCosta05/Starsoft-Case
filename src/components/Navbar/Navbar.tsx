@@ -1,13 +1,13 @@
 "use client";
 
-import React, { useMemo } from 'react'
+import React from 'react'
 import { useSelector } from 'react-redux'
 import styles from '@/styles/Navbar/Navbar.module.sass'
 import Image from 'next/image'
 import logo from '@/images/logo.svg'
 import bag from '@/images/Bag.svg'
 import Link from 'next/link'
-import {selectItemsCount} from '@/redux/cart/cart.selectors'
+import {selectItemsCount} from "@/redux/cart/cart.selectors"
 
 export default function Navbar() {
   
