@@ -5,21 +5,21 @@ import React, { useRef } from "react";
 import CheckoutClient from './page.client';
 import { removeItem, increaseItemQuantity, decreaseItemQuantity } from '@/redux/cart/slice';
 import { selectItemsTotalPrice } from "@/redux/cart/cart.selectors"
+import type { RootState } from '@/redux/store';
 
 export default function Checkout() {
   const dispatch = useDispatch();
-  const items = useSelector((state) => state.cart.items);
-  const itemRefs = useRef(items.map(() => React.createRef()));
+  const items = useSelector((state: RootState) => state.cart.items);
 
-  const handleIncrease = (id: string) => {
+  const handleIncrease = (id: number) => {
     dispatch(increaseItemQuantity(id));
   };
 
-  const handleDecrease = (id: string) => {
+  const handleDecrease = (id: number) => {
     dispatch(decreaseItemQuantity(id));
   };
 
-  const handleDelete = (id: string) => {
+  const handleDelete = (id: number) => {
     dispatch(removeItem(id));
   };
 
@@ -31,7 +31,6 @@ export default function Checkout() {
       handleIncrease={handleIncrease}
       handleDecrease={handleDecrease}
       handleDelete={handleDelete}
-      itemRefs={itemRefs}
       totalPrice={totalPrice}
     />
   );

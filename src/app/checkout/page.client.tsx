@@ -7,11 +7,11 @@ import { RedirectComponent, Card, WrapperComponent, ButtonComponent} from "@/com
 import { motion } from "framer-motion"
 
 interface PageProps {
-    items: Item[];
-    handleIncrease: () => void;
-    handleDecrease: () => void;
-    handleDelete: () => void;
-    totalPrice: number;
+  items: Item[];
+  handleIncrease: (id: number) => void;
+  handleDecrease: (id: number) => void;
+  handleDelete: (id: number) => void;
+  totalPrice: number;
 }
 export default function CheckoutClient({items, handleIncrease, handleDecrease, handleDelete, totalPrice}: PageProps) {
     const [text, setText] = useState("Finalizar compra")
@@ -19,6 +19,10 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
     const handleBuyClick = () => {
       alert("Compra finalizada com sucesso!")
       setText("Compra Finalizada!")
+      setTimeout(() => {
+        window.location.reload()
+        setText("Finalizar compra")
+      }, 1000)
     }
   return (
     <main className={styles.base}>

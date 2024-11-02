@@ -6,9 +6,6 @@ import { useInfiniteQuery } from "@tanstack/react-query";
 import { fetchData } from '@/utils/fetchData';
 
 export default function Home() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const totalPages = Math.round(32 / 12);
-  const progress = (currentPage / totalPages) * 100;
 
   const { status, data, fetchNextPage, hasNextPage, error } = useInfiniteQuery({
     queryKey: ["items"],
@@ -19,11 +16,8 @@ export default function Home() {
       }
       return undefined;
     },
+    initialPageParam: 1,
   });
-
-  if (status === 'loading') {
-    return <div>Carregando...</div>; {/* utilizarei o framer motion aqui */}
-  }
 
   if (status === 'error') {
     return <div>Ocorreu um erro: {error.message}</div>; {/* utilizarei o framer motion aqui */}

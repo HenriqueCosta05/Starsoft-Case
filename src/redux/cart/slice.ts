@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import type { Item, CartState } from '@/types/Cart'
 
 const initialState: CartState = {
@@ -20,15 +20,15 @@ const cartSlice = createSlice({
         state.items.push({ ...action.payload, amount: 1 });
       }
     },
-    removeItem(state, action: PayloadAction<string>) {
+    removeItem(state, action: PayloadAction<number>) {
       state.items = state.items.filter((item) => item.id !== action.payload);
     },
-    increaseItemQuantity(state, action: PayloadAction<string>) {
+    increaseItemQuantity(state, action: PayloadAction<number>) {
       state.items = state.items.map((item) =>
         item.id === action.payload ? { ...item, amount: item.amount + 1 } : item
       );
     },
-    decreaseItemQuantity(state, action: PayloadAction<string>) {
+    decreaseItemQuantity(state, action: PayloadAction<number>) {
       state.items = state.items.map((item) =>
         item.id === action.payload && item.amount > 1 ? { ...item, amount: item.amount - 1 } : item
       );

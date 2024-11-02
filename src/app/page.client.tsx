@@ -10,13 +10,14 @@ import type { Item } from "@/types/Cart";
 interface HomeProps {
   progress: number;
   loadMoreAction: () => void;
+  hasNextPage: boolean;
   items: Item[];
 }
 
-export default function HomeClient({ progress, items, loadMoreAction }: HomeProps) {
+export default function HomeClient({ progress, items, loadMoreAction, hasNextPage }: HomeProps) {
   const dispatch = useDispatch();
   
-  const handleItemClick = (item) => {
+  const handleItemClick = (item : Item) => {
     dispatch(
       addItemToCart({
         id: item.id,
@@ -32,7 +33,7 @@ export default function HomeClient({ progress, items, loadMoreAction }: HomeProp
     <main className={styles.container}>
       <section className={styles.cards_container}>
         {items.map((item, index) => (
-          <Card.Root key={index}>
+          <Card.Root key={index} orientation="vertical">
             <Card.Image src={item.image} alt={item.description} />
             <Card.Title>{item.name}</Card.Title>
             <Card.Description>{item.description}</Card.Description>

@@ -1,4 +1,3 @@
-import { FooterComponent, NavbarComponent } from "@/components";
 import type { Metadata } from "next";
 import style from "@/styles/base.module.sass";
 

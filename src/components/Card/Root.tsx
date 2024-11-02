@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React from "react";
 import styles from "@/styles/Card/Root.module.sass";
-import { motion, useInView } from "framer-motion";
+import { motion } from "framer-motion";
 
 interface RootProps {
   children: React.ReactNode;
@@ -8,14 +8,12 @@ interface RootProps {
 }
 
 export default function RootComponent({ children, orientation }: RootProps) {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { triggerOnce: false });
 
   return (
     <motion.div
-      ref={ref}
       initial={{ y: 100, opacity: 0 }}
-      animate={isInView ? { y: 0, opacity: 1 } : { y: 100, opacity: 0 }}
+      viewport={{once: false}}
+      animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.5 }}
       className={
         orientation === "horizontal"
