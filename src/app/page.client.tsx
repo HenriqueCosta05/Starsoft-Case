@@ -9,10 +9,11 @@ import type { Item } from "@/types/Cart";
 
 interface HomeProps {
   progress: number;
+  loadMoreAction: () => void;
   items: Item[];
 }
 
-export default function HomeClient({ progress, items }) {
+export default function HomeClient({ progress, items, loadMoreAction }: HomeProps) {
   const dispatch = useDispatch();
   
   const handleItemClick = (item) => {
@@ -30,8 +31,8 @@ export default function HomeClient({ progress, items }) {
   return (
     <main className={styles.container}>
       <section className={styles.cards_container}>
-        {items.map((item) => (
-          <Card.Root key={item.id}>
+        {items.map((item, index) => (
+          <Card.Root key={index}>
             <Card.Image src={item.image} alt={item.description} />
             <Card.Title>{item.name}</Card.Title>
             <Card.Description>{item.description}</Card.Description>
@@ -47,6 +48,7 @@ export default function HomeClient({ progress, items }) {
         progress={progress}
         className={styles.load_more}
         backgroundColor="#393939"
+        onClick={() => {loadMoreAction()}}
       >
         {progress === 100 ? "Você já viu tudo" : "Carregar mais"}
       </ButtonComponent>
