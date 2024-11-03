@@ -10,7 +10,7 @@ interface RootProps {
 export default function RootComponent({ children, orientation }: RootProps) {
   const [scope, animate] = useAnimate();
 
-  // Verifica se o elemento está visível na tela com IntersectionObserverAPI
+  // Verifica se o elemento está visível na tela com IntersectionObserver API
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -33,6 +33,7 @@ export default function RootComponent({ children, orientation }: RootProps) {
     return () => {
       if (currentScope) {
         observer.unobserve(currentScope);
+        observer.disconnect();
       }
     };
   }, [scope, animate]);

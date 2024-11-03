@@ -5,5 +5,5 @@ interface TitleProps {
   children: React.ReactNode;
 }
 export default function TitleComponent({ children }: TitleProps) {
-  return <div className={`${styles.card_title}`}>{children}</div>;
+  return <h1 className={`${styles.card_title}`}>{children}</h1>;
 }

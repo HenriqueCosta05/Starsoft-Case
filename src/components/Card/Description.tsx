@@ -5,5 +5,5 @@ interface DescriptionProps {
   children: React.ReactNode;
 }
 export default function DescriptionComponent({ children }: DescriptionProps) {
-  return <div className={`${styles.card_description}`}>{children}</div>;
+  return <p className={`${styles.card_description}`}>{children}</p>;
 }

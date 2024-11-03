@@ -7,6 +7,7 @@ import { fetchData } from '@/utils/fetchData';
 
 export default function Home() {
 
+  // useInfiniteQuery é útil para paginar dados eficientemente, sem precisar carregar todos os dados de uma vez
   const { status, data, fetchNextPage, hasNextPage, error } = useInfiniteQuery({
     queryKey: ["items"],
     queryFn: ({ pageParam = 1 }) => fetchData(API_URL, pageParam, 12),
@@ -34,7 +35,7 @@ return (
     <HomeClient
       progress={100 * (data.pages.length / data.pages[0].metadata.pageCount)}
       items={items}
-      loadMoreAction={fetchNextPage}
+      loadMoreClick={fetchNextPage}
       hasNextPage={hasNextPage}
     />
   );

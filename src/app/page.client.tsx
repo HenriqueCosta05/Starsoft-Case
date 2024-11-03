@@ -10,15 +10,15 @@ import { toast } from "react-toastify";
 
 interface HomeProps {
   progress: number;
-  loadMoreAction: () => void;
+  loadMoreClick: () => void;
   hasNextPage: boolean;
   items: Item[];
 }
 
-export default function HomeClient({ progress, items, loadMoreAction, hasNextPage }: HomeProps) {
+export default function HomeClient({ progress, items, loadMoreClick, hasNextPage }: HomeProps) {
   const dispatch = useDispatch();
   
-  const handleItemClick = (item : Item) => {
+  const handleAddToCartClick = (item : Item) => {
     dispatch(
       addItemToCart({
         id: item.id,
@@ -40,7 +40,7 @@ export default function HomeClient({ progress, items, loadMoreAction, hasNextPag
             <Card.Title>{item.name}</Card.Title>
             <Card.Description>{item.description}</Card.Description>
             <Card.Pricing>{item.price}</Card.Pricing>
-            <ButtonComponent onClick={() => {handleItemClick(item)}}>
+            <ButtonComponent onClick={() => {handleAddToCartClick(item)}}>
               Adicionar ao Carrinho
             </ButtonComponent>
           </Card.Root>
@@ -50,8 +50,8 @@ export default function HomeClient({ progress, items, loadMoreAction, hasNextPag
       <ButtonComponent
         progress={progress}
         className={styles.load_more}
-        backgroundColor="#393939"
-        onClick={() => {loadMoreAction()}}
+        variant="secondary"
+        onClick={() => {loadMoreClick()}}
       >
         {progress === 100 ? "Você já viu tudo" : "Carregar mais"}
       </ButtonComponent>

@@ -1,4 +1,3 @@
-// src/utils/fetchData.ts
 export async function fetchData(url: string, page: number, limit: number) {
   const response = await fetch(`${url}page=${page}&limit=${limit}`);
   if (!response.ok) {
