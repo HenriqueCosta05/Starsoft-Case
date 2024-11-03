@@ -11,10 +11,11 @@ import { toast } from "react-toastify";
 interface HomeProps {
   progress: number;
   loadMoreAction: () => void;
+  hasNextPage: boolean;
   items: Item[];
 }
 
-export default function HomeClient({ progress, items, loadMoreAction }: HomeProps) {
+export default function HomeClient({ progress, items, loadMoreAction, hasNextPage }: HomeProps) {
   const dispatch = useDispatch();
   
   const handleItemClick = (item : Item) => {
