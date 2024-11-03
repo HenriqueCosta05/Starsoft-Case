@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 import styles from "../styles/base.module.sass";
-import ReduxProvider from './redux-provider';
-import { ReactQueryClientProvider } from "./react-query-client-provider";
+import ReduxProvider from './providers/redux-provider';
+import { ReactQueryClientProvider } from "./providers/react-query-client-provider";
 
 const poppins = Poppins({
   subsets: ["latin"],
