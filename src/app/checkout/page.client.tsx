@@ -5,6 +5,7 @@ import styles from "@/styles/checkout.module.sass";
 import { Arrow, Bin, Coin } from "@/components/Icons";
 import { RedirectComponent, Card, WrapperComponent, ButtonComponent} from "@/components";
 import { motion } from "framer-motion"
+import { toast } from "react-toastify";
 
 interface PageProps {
   items: Item[];
@@ -70,7 +71,8 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
                     />
                     <Card.Toggle
                       onClick={() => {
-                        handleDelete(item.id);
+                          handleDelete(item.id);
+                          toast.success("Item removido do carrinho com sucesso!")
                       }}
                     >
                       <Bin />
@@ -96,7 +98,7 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
           </>
       ) : (
         <section className={styles.empty_section}>
-          <h1>Ainda não existem items no carrinho!</h1>
+          <h1>Ainda não existem itens no carrinho!</h1>
           <RedirectComponent>
             <ButtonComponent>Voltar à página inicial</ButtonComponent>
           </RedirectComponent>

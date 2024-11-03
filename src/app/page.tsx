@@ -20,13 +20,11 @@ export default function Home() {
   });
 
   if (status === 'error') {
-    return <div>Ocorreu um erro: {error.message}</div>; {/* utilizarei o framer motion aqui */}
+    return;
   }
 
   if (!data) {
-    return <div>Sem dados disponíveis</div>; {
-      /* utilizarei o framer motion aqui */
-    }
+    return; 
   }
 
     const items = data.pages.flatMap(page => page.data);

@@ -1,7 +1,9 @@
-
+version: '3.8'
 
 services:
   app:
+    container_name: starsoft-frontend-challenge
+    image: henriquecostaa/starsoft-frontend-challenge
     build:
       context: .
       dockerfile: Dockerfile

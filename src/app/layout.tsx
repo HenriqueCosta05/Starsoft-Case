@@ -3,6 +3,8 @@ import { Poppins } from "next/font/google";
 import styles from "../styles/base.module.sass";
 import ReduxProvider from './providers/redux-provider';
 import { ReactQueryClientProvider } from "./providers/react-query-client-provider";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -31,7 +33,8 @@ export default function RootLayout({
     <ReactQueryClientProvider>
     <html lang="pt-br">
       <body className={`${poppins.variable} ${styles.base}`}>
-        <ReduxProvider>
+          <ReduxProvider>
+          <ToastContainer/>
           {children}
         </ReduxProvider>
       </body>

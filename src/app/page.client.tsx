@@ -6,15 +6,15 @@ import { addItemToCart } from "@/redux/cart/slice";
 import { ButtonComponent, Card } from "@/components";
 import styles from "../styles/home.module.sass";
 import type { Item } from "@/types/Cart";
+import { toast } from "react-toastify";
 
 interface HomeProps {
   progress: number;
   loadMoreAction: () => void;
-  hasNextPage: boolean;
   items: Item[];
 }
 
-export default function HomeClient({ progress, items, loadMoreAction, hasNextPage }: HomeProps) {
+export default function HomeClient({ progress, items, loadMoreAction }: HomeProps) {
   const dispatch = useDispatch();
   
   const handleItemClick = (item : Item) => {
@@ -28,6 +28,7 @@ export default function HomeClient({ progress, items, loadMoreAction, hasNextPag
         amount: 1,
       })
     );
+    toast.success("Item adicionado ao carrinho com sucesso!");
   };
   return (
     <main className={styles.container}>
