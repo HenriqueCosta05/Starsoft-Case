@@ -1,10 +1,11 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
 .base
-  display: flex
-  align-items: center
-  border-radius: 50%
-  padding: 16px
-  font-family: vars.$font
-  border: none
-  cursor: pointer
+    @include flex(row, 0, center, center)
+    border-radius: 50%
+    @include spacing(0, 16px)
+    font-family: vars.$font
+    border: none
+    cursor: pointer
+    @include color(vars.$pallete-color-03, inherit)

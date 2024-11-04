@@ -1,30 +1,26 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
-.card_wrapper 
+.card_wrapper
     min-height: 300px
-    width: 20rem
-    background-color: vars.$pallete-color-02
-    padding: vars.$default-border
+    @include size(20rem, auto)
+    @include color(vars.$pallete-color-02, inherit)
+    @include spacing(0, 18px 12px)
     border-radius: vars.$default-border
     gap: 16px
-    padding: 18px 12px
-    display: flex
-    flex-direction: column
-    justify-content: space-between
+    @include flex(column, 16px, space-between, inherit)
 
     @media screen and (max-width: 768px)
-        width: 100%
-        padding: 12px
+        @include size(100%, auto)
+        @include spacing(0, 12px)
 
 .item_wrapper
-    background-color: vars.$pallete-color-03
-    border-radius: vars.$default-border 
-    display: flex
-    width: 100%
-    align-items: center
-    justify-content: center
+    @include color(vars.$pallete-color-03, inherit)
+    border-radius: vars.$default-border
+    @include flex(row, 0, center, center)
+    @include size(100%, auto)
     margin: auto
 
     @media screen and (max-width: 768px)
-        padding: 12px
-        width: 95%
+        @include spacing(0, 12px)
+        @include size(95%, auto)

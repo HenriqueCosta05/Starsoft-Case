@@ -1,7 +1,7 @@
 "use client";
 
 import { useSelector, useDispatch } from 'react-redux';
-import React, { useRef } from "react";
+import React from "react";
 import CheckoutClient from './page.client';
 import { removeItem, increaseItemQuantity, decreaseItemQuantity } from '@/redux/cart/slice';
 import { selectItemsTotalPrice } from "@/redux/cart/cart.selectors"

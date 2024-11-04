@@ -1,0 +1,38 @@
+@use './_variables.module' as vars
+
+@mixin flex($direction, $gap, $justify, $align) 
+  display: flex
+  justify-content: $justify
+  align-items: $align
+  flex-direction: $direction
+  gap: $gap
+
+@mixin size($width, $height) 
+  width: $width
+  height: $height
+
+@mixin spacing($margin, $padding) 
+  margin: $margin
+  padding: $padding
+
+@mixin button-styles($bg-color, $text-color, $border-radius, $padding) 
+  font-family: vars.$font
+  background-color: $bg-color
+  color: $text-color
+  border: none
+  text-transform: uppercase
+  border-radius: $border-radius
+  padding: $padding
+  cursor: pointer
+  transition: background-color 0.3s
+
+@mixin text-styles($font-size, $font-weight, $color, $margin) 
+  font-size: $font-size
+  font-weight: $font-weight
+  color: $color
+  font-family: vars.$font
+  margin: $margin
+
+@mixin color($bg-color, $text-color) 
+  background-color: $bg-color
+  color: $text-color

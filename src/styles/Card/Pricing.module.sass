@@ -1,18 +1,16 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
 .card_pricing
-    margin-bottom: 8px
-    height: 30px
-    font-size: 20px
-    font-weight: 600
-    display: flex
-    align-items: center
+    @include spacing(0 0 8px, 0)
+    @include size(auto, 30px)
+    @include text-styles(20px, 600, inherit, 0)
+    @include flex(row, 0, flex-start, center)
 
-.card_pricing_icon 
-    margin-right: 12px
-    width: 29px
-    height: 29px
+.card_pricing_icon
+    @include spacing(0, 0 12px 0 0)
+    @include size(29px, 29px)
 
     @media screen and (max-width: 768px)
         object-fit: contain
-        margin-right: 8px
+        @include spacing(0, 0 8px 0 0)

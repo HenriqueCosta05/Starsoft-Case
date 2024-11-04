@@ -1,8 +1,8 @@
 @use './_variables.module' as vars
+@use './_mixins.module' as *
 
 .base 
-    background-color: vars.$pallete-color-01
-    color: vars.$pallete-color-05
+    @include color(vars.$pallete-color-01, vars.$pallete-color-05)
     border-radius: vars.$default-border
     font-family: vars.$font
 

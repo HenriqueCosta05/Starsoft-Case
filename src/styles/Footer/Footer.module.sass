@@ -1,15 +1,14 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
-.main 
-  background-color: vars.$pallete-color-01
-  color: #FFFFFF44
-  height: 40px
-  width: 100%
-  text-align: center
-  display: flex
-  justify-content: center
-  align-items: center
-  position: sticky -webkit-sticky
-  bottom: 0
-  left: 0
-  margin-top: 40px
+.main
+    @include color(vars.$pallete-color-01, #FFFFFF44)
+    @include size(100%, 40px)
+    text-align: center
+    @include flex(row, 0, center, center)
+    position: sticky -webkit-sticky
+    bottom: 0
+    left: 0
+    @include spacing(40px 0 0 0, 0)
+    
+    

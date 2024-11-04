@@ -6,6 +6,7 @@ import { Arrow, Bin, Coin } from "@/components/Icons";
 import { RedirectComponent, Card, WrapperComponent, ButtonComponent} from "@/components";
 import { motion } from "framer-motion"
 import { toast } from "react-toastify";
+import Link from "next/link";
 
 interface PageProps {
   items: Item[];
@@ -99,9 +100,9 @@ export default function CheckoutClient({items, handleIncrease, handleDecrease, h
       ) : (
         <section className={styles.empty_section}>
           <h1>Ainda não existem itens no carrinho!</h1>
-          <RedirectComponent>
+          <Link href="/">
             <ButtonComponent>Voltar à página inicial</ButtonComponent>
-          </RedirectComponent>
+          </Link>
         </section>
       )}
     </main>

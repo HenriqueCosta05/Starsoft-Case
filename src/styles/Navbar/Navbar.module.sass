@@ -1,45 +1,34 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
-.base 
-    background-color: vars.$pallete-color-01
-    color: vars.$pallete-color-05
-    font-family: vars.$font
-    width: 100%
-    height: 100px
-    display: flex
-    justify-content: space-between
-    align-items: center 
+.base
+    @include color(vars.$pallete-color-01, vars.$pallete-color-05)
+    @include size(100%, 100px)
+    @include flex(row, 0, space-between, center)
     border-bottom: 1px solid #FFFFFF21
     margin-bottom: 10rem
     position: absolute
     top: 0
     left: 0
 
-.logo 
-    display: flex
-    align-items: center
+.logo
+    @include flex(row, 0, center, center)
     margin-left: 40px
-    img 
-        width: auto
-        height: 40px 
+    
+    img
+        @include size(auto, 40px)
 
-.cart 
-    display: flex
-    align-items: center
-    gap: 8px
+.cart
+    @include flex(row, 8px, center, center)
     margin-right: 40px
     color: vars.$pallete-color-05
 
-    a 
-        display: flex
-        align-items: center
-        gap: 5px 
-        padding-right: 20px 
+    a
+        @include flex(row, 5px, center, center)
+        padding-right: 20px
 
-    img 
-        width: 24px
-        height: auto
+    img
+        @include size(24px, auto)
 
-    span 
-        font-size: 14px
-        color: vars.$pallete-color-05
+    span
+        @include text-styles(14px, inherit, vars.$pallete-color-05, 0)

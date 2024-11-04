@@ -1,9 +1,9 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
 .card_description
-    font-weight: 300
-    font-size: 12px 
-    color: vars.$pallete-color-04
+    @include text-styles(12px, 300 , vars.$pallete-color-04, inherit)
+   
 
     @media screen and (max-width: 768px)
         font-size: 10px

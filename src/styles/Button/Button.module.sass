@@ -1,26 +1,12 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
 .base
   position: relative
-  padding: 10px 20px
-  border: none
-  width: 100%
-  border-radius: vars.$default-border
-  cursor: pointer
-  transition: background-color 0.3s
-  font-family: vars.$font
-  color: vars.$pallete-color-05
-  text-transform: uppercase
-  font-weight: 600
-  gap: 10px
-  display: flex
-  justify-content: center
-  align-items: center
-  flex-direction: column
-  text-decoration: none
-
-.disabled 
-  background-color: vars.$disabled-color
+  @include size(100%, auto)
+  @include text-styles(auto, 600, inherit, inherit)
+  @include flex(column, 0, center, center)
+  @include button-styles(vars.$primary-color, vars.$pallete-color-05, vars.$default-border, 10px)
 
 .primary 
   background-color: vars.$primary-color
@@ -29,15 +15,14 @@
   background-color: vars.$pallete-color-03
 
 .progress_bar
-  width: 100%
-  height: 10px
-  background-color: vars.$pallete-color-03
-  border-radius: 5px
-  overflow: hidden
-  margin-top: 5px
+    @include size(100%, 10px)
+    @include color(vars.$pallete-color-03, inherit)
+    border-radius: 5px
+    overflow: hidden
+    margin-top: 5px
 
 .progress
-  display: block
-  height: 100%
-  background-color: vars.$primary-color
-  transition: width 0.3s ease
+    display: block
+    height: 100%
+    @include color(vars.$primary-color, inherit)
+    transition: width 0.3s ease

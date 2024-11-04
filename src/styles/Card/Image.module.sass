@@ -1,21 +1,17 @@
 @use '../_variables.module' as vars
+@use '../_mixins.module' as *
 
 .card_image_container
-    background-color: vars.$pallete-color-01
-    border-radius: vars.$default-border
-    padding: 20px
-    margin: 15px
-    display: flex
-    justify-content: center
-    align-items: center
-    flex: 0 0 auto
+  background-color: vars.$pallete-color-01
+  @include spacing(15px, 20px)
+  @include flex(center, 0, center, center)
+  border-radius: vars.$default-border
+  flex: 0 0 auto
 
-.card_image 
-    width: 10rem
-    height: 10rem
-    border-radius: vars.$default-border
+.card_image
+  @include size(10rem, 10rem)
+  border-radius: vars.$default-border
 
 @media screen and (max-width: 768px)
-    .card_image
-        width: 25vw
-        height: 25vw
+  .card_image
+    @include size(25vw, 25vw)

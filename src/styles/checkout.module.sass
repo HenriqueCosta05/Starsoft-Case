@@ -1,15 +1,12 @@
 @use './_variables.module' as vars
+@use './_mixins.module' as *
 
 .base
-  display: flex
-  flex-direction: column
-  align-items: center
+  @include flex(column, 10px, center, center)
   border-radius: vars.$default-border
-  padding: 16px
-  font-family: vars.$font
-  color: vars.$pallete-color-05
-  background-color: vars.$pallete-color-01
-  margin: 10rem auto
+  @include spacing(auto, 16px)
+  @include text-styles(inherit, inherit, vars.$pallete-color-05, 10rem auto)
+  @include color(vars.$pallete-color-01, vars.$pallete-color-05)
 
   @media screen and (max-width: 768px)
     padding: 0

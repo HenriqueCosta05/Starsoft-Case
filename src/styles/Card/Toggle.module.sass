@@ -1,17 +1,15 @@
 @use '../_variables.module' as vars
 @use 'sass:color'
+@use '../_mixins.module' as *
 
 .toggle
-    background-color: vars.$primary-color
-    width: 3rem 
-    height: 3rem
+    @include color(vars.$primary-color, inherit)
+    @include size(3rem, 3rem)
     border: none
     border-radius: 50%
-    padding: 8px
+    @include spacing(0, 8px)
     margin: auto 20px
-    display: flex
-    align-items: center
-    justify-content: center
+    @include flex(center, 0, center, center)
     cursor: pointer
     transition: background-color 0.3s
 
@@ -19,6 +17,5 @@
         background-color: color.adjust(vars.$primary-color, $lightness: -10%)
 
     @media screen and (max-width: 768px)
-        width: 2.5rem
-        height: 2.5rem
-        padding: 6px
+        @include size(2.5rem, 2.5rem)
+        @include spacing(0, 6px)
